@@ -1,0 +1,40 @@
+@use "_project-variables" as *;
+
+
+
+.startPage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: $font-main;
+    overflow: hidden;
+
+    img {
+        padding-top: clamp(2.813rem, 1.903rem + 3.64vw, 5.313rem);
+        width: clamp(10rem, -4.061rem + 64.28vw, 56.2rem);
+        height: 100%;
+    }
+
+    .infoBlock {
+        display: flex;
+        flex-direction: column;
+        padding-left: clamp(0.938rem, -0.085rem + 4.09vw, 3.75rem);
+        padding-top: clamp(1.563rem, 0.767rem + 3.18vw, 3.75rem);
+
+        p {
+            font-size: $font-14;
+            color: #BBBBBB;
+            margin-top: clamp(0.45rem, 0.389rem + 0.28vw, 0.65rem);
+            padding-left: clamp(0.18rem, 0.143rem + 0.17vw, 0.3rem);
+            max-width: 80%;
+        }
+
+        h1 {
+            color: $font-main-color;
+            font-weight: $exo2-bold;
+            width: 100%;
+            font-size: clamp(1.35rem, -0.37rem + 7.86vw, 7rem);
+            padding-bottom: clamp(0.7rem, 0.368rem + 1.33vw, 1.613rem);
+        }
+    }
+}

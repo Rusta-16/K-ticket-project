@@ -1,0 +1,101 @@
+@use "_project-variables" as *;
+
+.servicePage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: $font-main-color;
+
+
+    #line {
+        float: left;
+        width: 90%;
+        margin: clamp(0rem, -0.913rem + 4.17vw, 3rem) 0 clamp(0rem, -0.913rem + 4.17vw, 3rem) 0;
+    }
+
+    .servicesTable {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(clamp(18.75rem, 16.848rem + 8.7vw, 25rem), 1fr));
+        gap: 1rem;
+        padding: 0 clamp(1.25rem, 0.341rem + 3.64vw, 3.75rem) 0 clamp(1.25rem, 0.341rem + 3.64vw, 3.75rem);
+
+        .serviceCard {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            padding: 1rem;
+            gap: 1rem;
+
+            img {
+                align-self: center;
+                width: clamp(4rem, 1.818rem + 8.73vw, 10rem);
+                height: clamp(4rem, 1.818rem + 8.73vw, 10rem);
+            }
+
+            .titleWithDisc {
+                display: flex;
+                flex-direction: column;
+                align-self: center;
+                gap: clamp(0.2rem, 0.063rem + 0.63vw, 0.65rem);
+
+                h3 {
+                    color: $main-gold;
+                    font-size: $font-h3;
+                    width: fit-content;
+                    height: fit-content;
+                }
+
+                p {
+                    font-size: $font-16;
+                    width: fit-content;
+                    height: fit-content;
+                }
+
+            }
+
+            .glass {
+                position: absolute;
+                inset: 0;
+                z-index: -1;
+                background: rgba(0, 0, 0, 0.09);
+                border-radius: 10px;
+                border: 0.4px solid rgba(88, 88, 88, 0.219);
+                box-shadow:
+                    0 4px 32px 0 rgba(0, 0, 0, 0.35), // внешняя тень
+                    0 0px 0.5px 0.5px rgba(190, 190, 190, 0.02),
+                    inset 0 0.5px 1px rgba(255, 255, 255, 0.20), // внутренний блик сверху
+                    inset 0.5px 0px 0px rgba(255, 255, 255, 0.20), // внутренний блик слева
+                    inset 0 -3px 2px rgba(0, 0, 0, 0.35); // внутренний теневой блик снизу
+
+                /* Внутреннее свечение и шум, как в filter1_f */
+                filter: blur(0.5px);
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    border-radius: inherit;
+                    background: linear-gradient(165deg,
+                            rgba(255, 255, 255, 0.0) 0%,
+                            rgba(255, 255, 255, 0.14) 30%,
+                            transparent 50%,
+                            rgba(255, 255, 255, 0.16) 70%,
+                            rgba(255, 255, 255, 0.0) 100%);
+                    filter: blur(6px);
+                    opacity: 0.1;
+                    mix-blend-mode: screen;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    inset: -2px;
+                    border-radius: 10px;
+                    border: 0.3px solid rgba(255, 255, 255, 0.09);
+                    filter: blur(6px);
+                    z-index: -1;
+                }
+            }
+        }
+    }
+}

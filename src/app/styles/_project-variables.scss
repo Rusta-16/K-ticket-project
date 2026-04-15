@@ -1,0 +1,46 @@
+// Color variables
+
+$gradient-linear-border: linear-gradient(to right,
+                #ffb72c 30%,
+                #9d711d 100%);
+
+$gradient-backgraund-but: linear-gradient(to top,
+                rgba(#FFC44B, 0.04) 0%,
+                rgba(#DFA22D, 0.04) 50%,
+                rgba(#CC880F, 0.04) 100%);
+
+$gradient-ellipse: radial-gradient(circle at 50% 50%,
+                rgba(255, 192, 69, 0.80) 0%,
+                rgba(245, 185, 68, 0.72) 10%,
+                rgba(225, 170, 62, 0.50) 20%,
+                rgba(200, 155, 58, 0.32) 30%,
+                rgba(178, 143, 66, 0.25) 40%,
+                rgba(178, 143, 66, 0.18) 50%,
+                rgba(178, 143, 66, 0.12) 60%,
+                rgba(178, 143, 66, 0.07) 70%,
+                rgba(178, 143, 66, 0.03) 80%,
+                rgba(178, 143, 66, 0.02) 90%,
+                rgba(178, 143, 66, 0.01) 95%,
+                rgba(178, 143, 66, 0.001) 97%,
+                transparent 99%);
+$main-gold: rgba(255, 192, 69, 0.85);
+$font-main-color: #d9d9d9;
+$gradient-backgraund-but-hover: linear-gradient(90deg,
+                #FFC44B 0%,
+                #F4B23F 20%,
+                #E0A535 35%,
+                #D69B29 53%,
+                #C38A1F 75%,
+                #C07D05 100%);
+// Font variables
+
+$font-main: var(--font-exo2);
+$exo2-bold: 700;
+$exo2-medium: 600;
+$font-14: clamp(0.6rem, 0.174rem + 1.95vw, 2rem);
+$font-16: clamp(0.86rem, 0.53rem + 1.25vw, 1.7rem);
+$font-h3: clamp(1.25rem, 0.9rem + 1.6vw, 2.4rem);
+
+// Border-radius
+
+$border-for-but: clamp(1.875rem, 1.193rem + 2.73vw, 3.75rem);

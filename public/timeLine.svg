@@ -1,0 +1,27 @@
+<svg width="327" height="349" viewBox="0 0 327 349" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<!-- Glow слой -->
+<path 
+d="M10.1289 191.07C10.6719..." 
+stroke="#FFB72C" 
+stroke-width="6"
+stroke-opacity="0.2"
+fill="none"
+/>
+
+<!-- Основная линия -->
+<path 
+d="M10.1289 191.07C10.6719..." 
+stroke="url(#grad)" 
+stroke-width="2"
+fill="none"
+/>
+
+<defs>
+<linearGradient id="grad" x1="0" y1="0" x2="300" y2="300">
+  <stop offset="0%" stop-color="#FFB72C"/>
+  <stop offset="100%" stop-color="#9D711D"/>
+</linearGradient>
+</defs>
+
+</svg>

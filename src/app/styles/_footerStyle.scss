@@ -1,0 +1,113 @@
+@use "_project-variables" as *;
+
+footer {
+    position: relative;
+    display: flex;
+    bottom: 0;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('/BackFooter.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    width: 100%;
+    font-family: $font-main;
+    font-size: $font-14;
+    color: $font-main-color;
+    padding: 1rem clamp(1rem, 4vw, 3.75rem);
+    padding-top: clamp(1.25rem, 0.717rem + 2.43vw, 3rem);
+    margin-top: clamp(2rem, 0.783rem + 5.57vw, 6rem);
+
+
+    .logoWithDesc {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: clamp(1.5rem, 0.739rem + 3.48vw, 4rem);
+        
+
+        .LinkForLogo {
+            align-self: center;
+
+            .logoIcon {
+                width: clamp(7.5rem, 4.773rem + 13.64vw, 15rem);
+                height: auto;
+            }
+        }
+
+        p {
+            display: inline-block;
+            width: fit-content;
+            color: $font-main-color;
+            font-size: $font-14;
+            text-align: center
+        }
+    }
+
+    .navigation {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        gap: clamp(1rem, -6.304rem + 33.39vw, 25rem);
+
+
+        .columnNav {
+            display: flex;
+            flex-direction: column;
+
+            p {
+                align-self: center;
+                margin-bottom: clamp(0.3rem, 0.087rem + 0.97vw, 1rem);
+            }
+
+            a {
+                text-decoration: none;
+                color: #b3b3b3dc;
+                text-align: center;
+
+                &:hover {
+                    color: $main-gold;
+                    transition: all 0.3s ease;
+                }
+            }
+        }
+
+        .contacts {
+            display: flex;
+            flex-direction: column;
+
+            p {
+                align-self: center;
+                margin-bottom: clamp(0.3rem, 0.087rem + 0.97vw, 1rem);
+            }
+
+            div {
+                display: flex;
+                flex-direction: row;
+                gap: clamp(0.2rem, -0.043rem + 1.11vw, 1rem);
+
+                img {
+                    height: clamp(0.85rem, 0.348rem + 2.3vw, 2.5rem);
+                    width: clamp(0.85rem, 0.348rem + 2.3vw, 2.5rem);
+                }
+            }
+        }
+    }
+
+    #line {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        width: 100%;
+        height: auto;
+    }
+
+    .allRightsReserved {
+        p {
+            text-align: center;
+            color: $font-main-color;
+            font-size: $font-14;
+        }
+    }
+}

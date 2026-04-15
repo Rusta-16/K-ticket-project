@@ -1,0 +1,348 @@
+@use "_project-variables" as *;
+
+.mapPage {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: $font-main-color;
+
+    align-items: center;
+
+    #line {
+        align-self: flex-start;
+        width: 90%;
+        margin: clamp(0rem, -0.913rem + 4.17vw, 3rem) 0 clamp(0rem, -0.913rem + 4.17vw, 3rem) 0;
+    }
+
+    #routeLine {
+        width: 100%;
+        height: 100%;
+    }
+
+    .mapBlock {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 clamp(1.25rem, 0.341rem + 3.64vw, 3.75rem) 0 clamp(1.25rem, 0.341rem + 3.64vw, 3.75rem);
+
+        .mapModule {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            padding: clamp(0.7rem, 0.304rem + 1.81vw, 2rem);
+            gap: clamp(0.3rem, 0.009rem + 1.16vw, 1.1rem);
+            width: 96%;
+
+            .glass {
+                position: absolute;
+                inset: 0;
+                z-index: -1;
+                background: rgba(0, 0, 0, 0.09);
+                border-radius: clamp(0.625rem, 0.245rem + 1.74vw, 1.875rem);
+                border: 0.4px solid rgba(88, 88, 88, 0.219);
+                box-shadow:
+                    0 4px 32px 0 rgba(0, 0, 0, 0.35), // внешняя тень
+                    0 0px 0.5px 0.5px rgba(190, 190, 190, 0.02),
+                    inset 0 0.5px 1px rgba(255, 255, 255, 0.20), // внутренний блик сверху
+                    inset 0.5px 0px 0px rgba(255, 255, 255, 0.20), // внутренний блик слева
+                    inset 0 -3px 2px rgba(0, 0, 0, 0.35); // внутренний теневой блик снизу
+
+                /* Внутреннее свечение и шум, как в filter1_f */
+                filter: blur(0.5px);
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    border-radius: inherit;
+                    background: linear-gradient(165deg,
+                            rgba(255, 255, 255, 0.0) 0%,
+                            rgba(255, 255, 255, 0.14) 30%,
+                            transparent 50%,
+                            rgba(255, 255, 255, 0.16) 70%,
+                            rgba(255, 255, 255, 0.0) 100%);
+                    filter: blur(6px);
+                    opacity: 0.1;
+                    mix-blend-mode: screen;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    inset: -2px;
+                    border-radius: 10px;
+                    border: 0.3px solid rgba(255, 255, 255, 0.09);
+                    filter: blur(6px);
+                    z-index: -1;
+                }
+            }
+
+            #Route {
+                width: fit-content;
+                color: #D9D9D9;
+                font-weight: 150;
+                font-size: clamp(0.8rem, 0.435rem + 1.67vw, 2rem);
+                padding-bottom: 0.1rem;
+                margin-left: clamp(0.3rem, -0.065rem + 1.67vw, 1.5rem);
+                border-bottom: solid 1px rgba(255, 192, 69, 0.8);
+            }
+
+            .selectRoute {
+                align-items: center;
+                justify-content: space-evenly;
+
+                p {
+                    font-size: clamp(1rem, -0.126rem + 5.15vw, 4.7rem);
+                    color: #ffff;
+                    height: fit-content;
+                    width: fit-content;
+                }
+
+                display: flex;
+                flex-direction: row;
+
+                #arrow {
+                    font-weight: 400;
+                    padding: clamp(0.3rem, 0.087rem + 0.97vw, 1rem) clamp(0.7rem, -0.061rem + 3.48vw, 3.2rem) clamp(0.3rem, 0.087rem + 0.97vw, 1rem) clamp(0.7rem, -0.061rem + 3.48vw, 3.2rem);
+                    transition: transform 0.2s ease, box-shadow 0.2s ease;
+                    transform-origin: center;
+
+                    &:hover {
+                        transform: scale(1.1);
+                        font-weight: bolder;
+                        transition: transform 0.5s ease;
+                    }
+
+                    .arrowIcon {
+                        display: inline-block;
+                        transition: transform 0.8s ease-in-out;
+
+                        &:active {
+                            transform: rotate(1800deg);
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+    .timeWithBut {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(0.45rem, 0.328rem + 0.56vw, 0.85rem);
+
+        .timeWithPrice {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.3rem;
+
+            img {
+                width: 1rem;
+                height: 1rem;
+            }
+
+            p {
+                font-size: clamp(0.8rem, 0.435rem + 1.67vw, 2rem);
+                word-spacing: 0.05rem;
+            }
+        }
+
+        #sellTicketBut {
+            font-size: clamp(0.8rem, 0.191rem + 2.78vw, 2.8rem);
+            padding: clamp(0.5rem, 0.464rem + 0.15vw, 0.6rem) clamp(2.2rem, 2.127rem + 0.29vw, 2.4rem) clamp(0.65rem, 0.632rem + 0.07vw, 0.7rem) clamp(2.2rem, 2.127rem + 0.29vw, 2.4rem);
+        }
+    }
+}
+
+.ticketPanel {
+    overflow: hidden;
+    margin-top: clamp(1.25rem, 0.489rem + 3.48vw, 3.75rem);
+    width: 85vw;
+    padding: clamp(1rem, 0.087rem + 4.17vw, 4rem);
+    border-radius: 16px;
+    background: #191616;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1rem, 0.543rem + 2.09vw, 2.5rem);
+
+    #sell {
+        margin-top: clamp(0.5rem, -0.474rem + 4.45vw, 3.7rem);
+    }
+
+    .step {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        justify-content: center;
+        align-items: center;
+
+        p {
+            font-family: 650;
+            font-size: clamp(1rem, 0.087rem + 4.17vw, 4rem);
+        }
+
+        .calendarGrid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: clamp(0.35rem, 1.6vw, 1.5rem);
+            margin-top: 10px;
+
+            .dayCard {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: clamp(2.1rem, -0.304rem + 10.99vw, 10rem);
+                height: clamp(2.3rem, -0.135rem + 11.13vw, 10.3rem);
+                border-radius: 10px;
+
+                background: transparent;
+                border: 2px solid rgba(178, 143, 66, 0.5);
+                color: $main-gold;
+
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+
+                .day {
+                    position: absolute;
+                    font-size: clamp(0.6rem, 0.174rem + 1.95vw, 2rem);
+                    opacity: 0.7;
+                    text-transform: lowercase;
+                    top: 0;
+                    right: 0;
+                    color: $font-main-color;
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover {
+                        color: #191616;
+                    }
+                }
+
+                .date {
+                    font-size: clamp(1rem, -0.217rem + 5.57vw, 5rem);
+                    font-weight: 500;
+                }
+
+                &:hover {
+                    transform: translateY(-5px);
+                    background: $main-gold;
+                    color: #191616;
+                    border: 5px solid rgba(186, 186, 186, 0.8);
+                    box-shadow: 0 0 10px rgba(178, 143, 66, 0.6);
+                }
+
+                &.active {
+                    transform: translateY(-5px);
+                    background: $main-gold;
+                    color: #191616;
+                    border: 5px solid rgba(186, 186, 186, 0.8);
+                    box-shadow: 0 0 10px rgba(178, 143, 66, 0.6);
+
+                    box-shadow:
+                        0 0 8px rgba(212, 175, 55, 0.6),
+                        0 0 16px rgba(178, 143, 66, 0.4);
+
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+}
+
+#Seat {
+    width: clamp(4rem, 2.783rem + 5.57vw, 8rem);
+    height: clamp(5.7rem, 4.178rem + 6.96vw, 10.7rem);
+}
+
+.input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+.bookingSummary {
+    background: #252525;
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+}
+
+.bookingSummary h3 {
+    margin-bottom: 15px;
+    color: #D9D9D9;
+    text-align: center;
+}
+
+.summaryInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 1.05rem;
+
+    strong {
+        color: $main-gold;
+    }
+}
+
+.passengerForm {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+    padding: 0 clamp(1rem, 0.087rem + 4.17vw, 4rem);
+    justify-content: center;
+    align-items: center;
+
+    .formGroup {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        gap: 6px;
+        input {
+            border-radius:20px ;
+            text-align: center;
+            width: 100%;
+            font-size: .9rem;
+            border: 2px solid rgba(178, 143, 66, 0.8);
+            background-color: #191616;
+            color: $font-main-color;
+        }
+    }
+}
+
+
+
+.error {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    margin-left: 4px;
+}
+
+.backButton {
+    margin-top: 10px;
+    background: transparent;
+    border: none;
+    color: #aaa;
+    width: 100%;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        color: #D9D9D9;
+    }
+}
+.seatMapContainer{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+#SalonW{
+    width: clamp(18rem, 8.87rem + 41.74vw, 48rem);
+    height: clamp(25rem, 15.87rem + 41.74vw, 55rem);
+}

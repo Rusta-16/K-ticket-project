@@ -1,0 +1,122 @@
+@use "_project-variables" as *;
+@use "_headerStyle";
+@use "_startPageStyle";
+@use "_serviceStyle";
+@use "_mapStyle";
+@use "_photoStyle";
+@use "_conditionsStyle";
+@use "_footerStyle";
+
+::selection {
+    background: $main-gold;
+    color: #111111;
+}
+
+::-moz-selection {
+    background: $main-gold;
+    color: #111111;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #191616;
+    width: 100%;
+    height: fit-content;
+    font-family: $font-main;
+    position: relative;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+.ellipse {
+    position: absolute;
+    width: 150vw;
+    height: 150vw;
+    border-radius: 50%;
+    background: $gradient-ellipse;
+    filter: blur(15vw);
+    opacity: 0.9;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#el1 {
+    top: 60vw;
+    left: -80vw;
+}
+
+#el2 {
+    top: clamp(50rem, 19.565rem + 139.13vw, 150rem);
+    right: -80vw;
+}
+
+.mainButton {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+    z-index: 1;
+    padding: clamp(0.5rem, 0.064rem + 1.75vw, 1.7rem) clamp(0.7rem, -0.304rem + 4.59vw, 4rem) clamp(0.6rem, 0.055rem + 2.18vw, 2.1rem) clamp(0.7rem, -0.304rem + 4.59vw, 4rem);
+    font-family: var(--font-exo2);
+    font-size: clamp(0.6rem, 0.022rem + 2.64vw, 2.5rem);
+    font-weight: $exo2-medium;
+    color: $main-gold;
+    background: transparent;
+    border: none;
+    border-radius: $border-for-but;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        inset 1px 1px 1px 0 rgba(255, 255, 255, 0.35),
+        inset 0 0 0 2px #B28F42,
+        0 0 20px 4px rgba(178, 143, 66, 0.25),
+        0 8px 25px rgba(0, 0, 0, 0.7);
+
+    .backgroundForMainBut {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: $gradient-backgraund-but;
+        border-radius: inherit;
+        transition: opacity 0.4s ease;
+    }
+
+    &:hover {
+        color: #000000;
+        font-weight: $exo2-bold;
+        background: $gradient-backgraund-but-hover;
+        box-shadow: inset 0 1px 0 1px rgba(255, 255, 255, 0.25),
+            inset 0 0 0 1.5px #D4AF37,
+            0 0 1px 1px rgba(221, 173, 71, 0.65),
+            0 0 12px 5px rgba(178, 143, 66, 0.55),
+            0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    &:active {
+        transform: scale(0.97);
+        /* лёгкое нажатие */
+        transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        ;
+
+        box-shadow:
+            inset 0 2px 4px rgba(0, 0, 0, 0.3),
+            inset 0 0 0 3px #D4AF37,
+            0 0 15px 2px rgba(178, 143, 66, 0.85),
+            0 8px 20px rgba(0, 0, 0, 0.7);
+    }
+}

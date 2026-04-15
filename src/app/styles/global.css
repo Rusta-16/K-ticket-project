@@ -1,0 +1,657 @@
+@charset "UTF-8";
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-image: url("/фон хедера.svg");
+  width: 100%;
+  height: clamp(4.375rem, 3.438rem + 3.75vw, 6.25rem);
+  padding: 0 clamp(0rem, -0.304rem + 1.39vw, 1rem) 0 clamp(0.625rem, -0.966rem + 7.7vw, 2.3rem);
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
+}
+header nav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  align-items: center;
+  padding-top: 150px;
+  z-index: 10;
+  top: 80px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(25, 22, 22, 0.98);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  gap: 2rem;
+  transition: all 0.6s ease-in-out;
+}
+header nav a {
+  text-decoration: none;
+  font-family: var(--font-exo2);
+  font-size: clamp(1.25rem, 0.9rem + 1.6vw, 2.4rem);
+  color: #d9d9d9;
+  transition: all 0.15s ease-in-out;
+}
+header nav a:hover {
+  color: rgba(255, 192, 69, 0.85);
+  font-weight: 500;
+}
+header nav.mobileNav {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(10px);
+}
+header .LinkForLogo {
+  align-self: center;
+}
+header .LinkForLogo .logoIcon {
+  width: clamp(7.5rem, 4.773rem + 13.64vw, 15rem);
+  height: auto;
+}
+header #LinkForBurgerMenu {
+  background: none;
+  text-decoration: none;
+  border: none;
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+header #LinkForBurgerMenu .burgerMenuIcon {
+  width: clamp(3.4rem, 2.533rem + 3.97vw, 6.25rem);
+  height: auto;
+  transition: transform 0.4s ease-in-out;
+}
+header #LinkForBurgerMenu.open .burgerMenuIcon {
+  transform: rotate(270deg);
+}
+
+.startPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: var(--font-exo2);
+  overflow: hidden;
+}
+.startPage img {
+  padding-top: clamp(2.813rem, 1.903rem + 3.64vw, 5.313rem);
+  width: clamp(10rem, -4.061rem + 64.28vw, 56.2rem);
+  height: 100%;
+}
+.startPage .infoBlock {
+  display: flex;
+  flex-direction: column;
+  padding-left: clamp(0.938rem, -0.085rem + 4.09vw, 3.75rem);
+  padding-top: clamp(1.563rem, 0.767rem + 3.18vw, 3.75rem);
+}
+.startPage .infoBlock p {
+  font-size: clamp(0.6rem, 0.174rem + 1.95vw, 2rem);
+  color: #BBBBBB;
+  margin-top: clamp(0.45rem, 0.389rem + 0.28vw, 0.65rem);
+  padding-left: clamp(0.18rem, 0.143rem + 0.17vw, 0.3rem);
+  max-width: 80%;
+}
+.startPage .infoBlock h1 {
+  color: #d9d9d9;
+  font-weight: 700;
+  width: 100%;
+  font-size: clamp(1.35rem, -0.37rem + 7.86vw, 7rem);
+  padding-bottom: clamp(0.7rem, 0.368rem + 1.33vw, 1.613rem);
+}
+
+.servicePage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: #d9d9d9;
+}
+.servicePage #line {
+  float: left;
+  width: 90%;
+  margin: clamp(0rem, -0.913rem + 4.17vw, 3rem) 0 clamp(0rem, -0.913rem + 4.17vw, 3rem) 0;
+}
+.servicePage .servicesTable {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(18.75rem, 16.848rem + 8.7vw, 25rem), 1fr));
+  gap: 1rem;
+  padding: 0 clamp(1.25rem, 0.341rem + 3.64vw, 3.75rem) 0 clamp(1.25rem, 0.341rem + 3.64vw, 3.75rem);
+}
+.servicePage .servicesTable .serviceCard {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  gap: 1rem;
+}
+.servicePage .servicesTable .serviceCard img {
+  align-self: center;
+  width: clamp(4rem, 1.818rem + 8.73vw, 10rem);
+  height: clamp(4rem, 1.818rem + 8.73vw, 10rem);
+}
+.servicePage .servicesTable .serviceCard .titleWithDisc {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  gap: clamp(0.2rem, 0.063rem + 0.63vw, 0.65rem);
+}
+.servicePage .servicesTable .serviceCard .titleWithDisc h3 {
+  color: rgba(255, 192, 69, 0.85);
+  font-size: clamp(1.25rem, 0.9rem + 1.6vw, 2.4rem);
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.servicePage .servicesTable .serviceCard .titleWithDisc p {
+  font-size: clamp(0.86rem, 0.53rem + 1.25vw, 1.7rem);
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.servicePage .servicesTable .serviceCard .glass {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.09);
+  border-radius: 10px;
+  border: 0.4px solid rgba(88, 88, 88, 0.219);
+  box-shadow: 0 4px 32px 0 rgba(0, 0, 0, 0.35), 0 0px 0.5px 0.5px rgba(190, 190, 190, 0.02), inset 0 0.5px 1px rgba(255, 255, 255, 0.2), inset 0.5px 0px 0px rgba(255, 255, 255, 0.2), inset 0 -3px 2px rgba(0, 0, 0, 0.35);
+  /* Внутреннее свечение и шум, как в filter1_f */
+  filter: blur(0.5px);
+}
+.servicePage .servicesTable .serviceCard .glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.14) 30%, transparent 50%, rgba(255, 255, 255, 0.16) 70%, rgba(255, 255, 255, 0) 100%);
+  filter: blur(6px);
+  opacity: 0.1;
+  mix-blend-mode: screen;
+}
+.servicePage .servicesTable .serviceCard .glass::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 10px;
+  border: 0.3px solid rgba(255, 255, 255, 0.09);
+  filter: blur(6px);
+  z-index: -1;
+}
+
+.mapPage {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: #d9d9d9;
+  align-items: center;
+}
+.mapPage #line {
+  align-self: flex-start;
+  width: 90%;
+  margin: clamp(0rem, -0.913rem + 4.17vw, 3rem) 0 clamp(0rem, -0.913rem + 4.17vw, 3rem) 0;
+}
+.mapPage #routeLine {
+  width: 100%;
+  height: 100%;
+}
+.mapPage .mapBlock {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 clamp(1.25rem, 0.341rem + 3.64vw, 3.75rem) 0 clamp(1.25rem, 0.341rem + 3.64vw, 3.75rem);
+}
+.mapPage .mapBlock .mapModule {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding: clamp(0.7rem, 0.304rem + 1.81vw, 2rem);
+  gap: clamp(0.3rem, 0.009rem + 1.16vw, 1.1rem);
+  width: 96%;
+}
+.mapPage .mapBlock .mapModule .glass {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.09);
+  border-radius: clamp(0.625rem, 0.245rem + 1.74vw, 1.875rem);
+  border: 0.4px solid rgba(88, 88, 88, 0.219);
+  box-shadow: 0 4px 32px 0 rgba(0, 0, 0, 0.35), 0 0px 0.5px 0.5px rgba(190, 190, 190, 0.02), inset 0 0.5px 1px rgba(255, 255, 255, 0.2), inset 0.5px 0px 0px rgba(255, 255, 255, 0.2), inset 0 -3px 2px rgba(0, 0, 0, 0.35);
+  /* Внутреннее свечение и шум, как в filter1_f */
+  filter: blur(0.5px);
+}
+.mapPage .mapBlock .mapModule .glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.14) 30%, transparent 50%, rgba(255, 255, 255, 0.16) 70%, rgba(255, 255, 255, 0) 100%);
+  filter: blur(6px);
+  opacity: 0.1;
+  mix-blend-mode: screen;
+}
+.mapPage .mapBlock .mapModule .glass::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 10px;
+  border: 0.3px solid rgba(255, 255, 255, 0.09);
+  filter: blur(6px);
+  z-index: -1;
+}
+.mapPage .mapBlock .mapModule #Route {
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #D9D9D9;
+  font-weight: 150;
+  font-size: clamp(0.8rem, 0.435rem + 1.67vw, 2rem);
+  padding-bottom: 0.1rem;
+  margin-left: clamp(0.3rem, -0.065rem + 1.67vw, 1.5rem);
+  border-bottom: solid 1px rgba(255, 192, 69, 0.8);
+}
+.mapPage .mapBlock .mapModule .selectRoute {
+  align-items: center;
+  justify-content: space-evenly;
+}
+.mapPage .mapBlock .mapModule .selectRoute p {
+  font-size: clamp(1rem, -0.126rem + 5.15vw, 4.7rem);
+  color: white;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.mapPage .mapBlock .mapModule .selectRoute {
+  display: flex;
+  flex-direction: row;
+}
+.mapPage .mapBlock .mapModule .selectRoute #arrow {
+  font-weight: 400;
+  padding: clamp(0.3rem, 0.087rem + 0.97vw, 1rem) clamp(0.7rem, -0.061rem + 3.48vw, 3.2rem) clamp(0.3rem, 0.087rem + 0.97vw, 1rem) clamp(0.7rem, -0.061rem + 3.48vw, 3.2rem);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform-origin: center;
+}
+.mapPage .mapBlock .mapModule .selectRoute #arrow:hover {
+  transform: scale(1.1);
+  font-weight: bolder;
+  transition: transform 0.5s ease;
+}
+.mapPage .mapBlock .mapModule .selectRoute #arrow .arrowIcon {
+  display: inline-block;
+  transition: transform 0.8s ease-in-out;
+}
+.mapPage .mapBlock .mapModule .selectRoute #arrow .arrowIcon:active {
+  transform: rotate(1800deg);
+}
+.mapPage .timeWithBut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.45rem, 0.328rem + 0.56vw, 0.85rem);
+}
+.mapPage .timeWithBut .timeWithPrice {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.3rem;
+}
+.mapPage .timeWithBut .timeWithPrice img {
+  width: 1rem;
+  height: 1rem;
+}
+.mapPage .timeWithBut .timeWithPrice p {
+  font-size: clamp(0.8rem, 0.435rem + 1.67vw, 2rem);
+  word-spacing: 0.05rem;
+}
+.mapPage .timeWithBut #sellTicketBut {
+  font-size: clamp(0.8rem, 0.191rem + 2.78vw, 2.8rem);
+  padding: clamp(0.5rem, 0.464rem + 0.15vw, 0.6rem) clamp(2.2rem, 2.127rem + 0.29vw, 2.4rem) clamp(0.65rem, 0.632rem + 0.07vw, 0.7rem) clamp(2.2rem, 2.127rem + 0.29vw, 2.4rem);
+}
+
+.ticketPanel {
+  overflow: hidden;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.photoPage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 clamp(1rem, 5vw, 3.75rem);
+}
+.photoPage #line {
+  align-self: flex-start;
+  width: 90%;
+  margin: clamp(0rem, -0.913rem + 4.17vw, 3rem) 0 clamp(0rem, -0.913rem + 4.17vw, 3rem) 0;
+}
+.photoPage .photoBlock {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 0 10px;
+  /* небольшой отступ для красоты */
+}
+.photoPage {
+  /* Swiper */
+}
+.photoPage .swiper {
+  width: 100%;
+  padding: 10px 0;
+}
+.photoPage .slide {
+  padding-bottom: 0.5rem;
+  box-sizing: border-box;
+}
+.photoPage .imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/20;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.photoPage h2 {
+  color: #d9d9d9;
+  font-weight: 400;
+  text-align: center;
+  font-size: clamp(1.35rem, 1rem + 1.6vw, 2.5rem);
+  margin-top: 1rem;
+}
+.photoPage {
+  /* Стрелки */
+}
+.photoPage #arrowLeft {
+  position: absolute;
+  top: 55%;
+  z-index: 20;
+  border-radius: 50%;
+  max-width: 1rem !important;
+  aspect-ratio: 1/1;
+}
+.photoPage #arrowRight {
+  position: absolute;
+  top: 55%;
+  z-index: 20;
+  border-radius: 50%;
+  max-width: 1rem !important;
+  aspect-ratio: 1/1;
+}
+.photoPage #arrowLeft {
+  left: 1%;
+}
+.photoPage #arrowRight {
+  right: 1%;
+}
+.photoPage {
+  /* Glass эффект */
+}
+.photoPage .glass {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.09);
+  border-radius: 10px;
+  border: 0.4px solid rgba(88, 88, 88, 0.219);
+  box-shadow: 0 4px 32px 0 rgba(0, 0, 0, 0.35), 0 0px 0.5px 0.5px rgba(190, 190, 190, 0.02), inset 0 0.5px 1px rgba(255, 255, 255, 0.2), inset 0.5px 0px 0px rgba(255, 255, 255, 0.2), inset 0 -3px 2px rgba(0, 0, 0, 0.35);
+  filter: blur(0.5px);
+  -webkit-mask: radial-gradient(circle 1.4rem at left center, transparent 98%, black 100%), radial-gradient(circle 1.4rem at right center, transparent 98%, black 100%), linear-gradient(black, black);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+.conditionsPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.conditionsPage .textWithIcon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(0.5rem, 0.196rem + 1.39vw, 1.5rem);
+}
+.conditionsPage .textWithIcon img {
+  width: clamp(2rem, 0.478rem + 6.96vw, 7rem);
+}
+.conditionsPage h1 {
+  font-size: clamp(0.86rem, 0.057rem + 3.67vw, 3.5rem);
+  color: #d9d9d9;
+}
+.conditionsPage #t1 {
+  padding-left: clamp(1.1rem, -1.061rem + 9.88vw, 8.2rem);
+  align-self: flex-start;
+}
+.conditionsPage #t2 {
+  padding-right: clamp(1.1rem, -1.061rem + 9.88vw, 8.2rem);
+  align-self: flex-end;
+}
+.conditionsPage #t3 {
+  padding-left: clamp(1.1rem, -1.061rem + 9.88vw, 8.2rem);
+  align-self: flex-start;
+}
+.conditionsPage #line {
+  align-self: flex-start;
+  width: 90%;
+  margin: clamp(0rem, -0.913rem + 4.17vw, 3rem) 0 clamp(0rem, -0.913rem + 4.17vw, 3rem) 0;
+}
+.conditionsPage svg {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+}
+.conditionsPage {
+  /* Делаем толщину линии адаптивной */
+}
+.conditionsPage path {
+  stroke-width: clamp(0.125rem, 0.049rem + 0.35vw, 0.375rem) !important;
+}
+
+.additional-conditions {
+  display: none;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.additional-conditions.show {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+}
+
+#svgFinal {
+  opacity: 0;
+  visibility: hidden;
+}
+
+footer {
+  position: relative;
+  display: flex;
+  bottom: 0;
+  flex-direction: column;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: var(--font-exo2);
+  font-size: clamp(0.6rem, 0.174rem + 1.95vw, 2rem);
+  color: #d9d9d9;
+  padding: 1rem clamp(1rem, 4vw, 3.75rem);
+}
+footer .logoWithDesc {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+footer .logoWithDesc p {
+  display: inline-block;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #d9d9d9;
+  font-size: clamp(0.6rem, 0.174rem + 1.95vw, 2rem);
+  text-align: center;
+}
+footer .navigation {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+}
+footer .navigation .columnNav {
+  display: flex;
+  flex-direction: column;
+}
+footer .navigation .contacts {
+  display: flex;
+  flex-direction: column;
+}
+footer .navigation .contacts div {
+  display: flex;
+  flex-direction: row;
+}
+footer #line {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: auto;
+}
+footer .allRightsReserved p {
+  text-align: center;
+  color: #d9d9d9;
+  font-size: clamp(0.6rem, 0.174rem + 1.95vw, 2rem);
+}
+
+::-moz-selection {
+  background: rgba(255, 192, 69, 0.85);
+  color: #111111;
+}
+
+::selection {
+  background: rgba(255, 192, 69, 0.85);
+  color: #111111;
+}
+
+::-moz-selection {
+  background: rgba(255, 192, 69, 0.85);
+  color: #111111;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #191616;
+  width: 100%;
+  font-family: var(--font-exo2);
+  position: relative;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+.ellipse {
+  position: absolute;
+  width: 150vw;
+  height: 150vw;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 192, 69, 0.8) 0%, rgba(245, 185, 68, 0.72) 10%, rgba(225, 170, 62, 0.5) 20%, rgba(200, 155, 58, 0.32) 30%, rgba(178, 143, 66, 0.25) 40%, rgba(178, 143, 66, 0.18) 50%, rgba(178, 143, 66, 0.12) 60%, rgba(178, 143, 66, 0.07) 70%, rgba(178, 143, 66, 0.03) 80%, rgba(178, 143, 66, 0.02) 90%, rgba(178, 143, 66, 0.01) 95%, rgba(178, 143, 66, 0.001) 97%, transparent 99%);
+  filter: blur(15vw);
+  opacity: 0.9;
+  z-index: -1;
+  pointer-events: none;
+}
+
+#el1 {
+  top: 60vw;
+  left: -80vw;
+}
+
+#el2 {
+  top: 260vw;
+  right: -80vw;
+}
+
+.mainButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  z-index: 1;
+  padding: clamp(0.5rem, 0.064rem + 1.75vw, 1.7rem) clamp(0.7rem, -0.304rem + 4.59vw, 4rem) clamp(0.6rem, 0.055rem + 2.18vw, 2.1rem) clamp(0.7rem, -0.304rem + 4.59vw, 4rem);
+  font-family: var(--font-exo2);
+  font-size: clamp(0.6rem, 0.022rem + 2.64vw, 2.5rem);
+  font-weight: 600;
+  color: rgba(255, 192, 69, 0.85);
+  background: transparent;
+  border: none;
+  border-radius: clamp(1.875rem, 1.193rem + 2.73vw, 3.75rem);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 1px 1px 1px 0 rgba(255, 255, 255, 0.35), inset 0 0 0 2px #B28F42, 0 0 20px 4px rgba(178, 143, 66, 0.25), 0 8px 25px rgba(0, 0, 0, 0.7);
+}
+.mainButton .backgroundForMainBut {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to top, rgba(255, 196, 75, 0.04) 0%, rgba(223, 162, 45, 0.04) 50%, rgba(204, 136, 15, 0.04) 100%);
+  border-radius: inherit;
+  transition: opacity 0.4s ease;
+}
+.mainButton:hover {
+  color: #000000;
+  font-weight: 700;
+  background: linear-gradient(90deg, #FFC44B 0%, #F4B23F 20%, #E0A535 35%, #D69B29 53%, #C38A1F 75%, #C07D05 100%);
+  box-shadow: inset 0 1px 0 1px rgba(255, 255, 255, 0.25), inset 0 0 0 1.5px #D4AF37, 0 0 1px 1px rgba(221, 173, 71, 0.65), 0 0 12px 5px rgba(178, 143, 66, 0.55), 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+.mainButton:active {
+  transform: scale(0.97);
+  /* лёгкое нажатие */
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 0 0 3px #D4AF37, 0 0 15px 2px rgba(178, 143, 66, 0.85), 0 8px 20px rgba(0, 0, 0, 0.7);
+}/*# sourceMappingURL=global.css.map */

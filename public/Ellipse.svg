@@ -1,0 +1,19 @@
+<svg width="440" height="1002" viewBox="0 0 440 1002" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_df_154_98)" style="mix-blend-mode:exclusion">
+<ellipse cx="227" cy="501" rx="187" ry="201" fill="#FFC045" fill-opacity="0.45" shape-rendering="crispEdges"/>
+</g>
+<defs>
+<filter id="filter0_df_154_98" x="-260" y="0" width="974" height="1002" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="26" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_154_98"/>
+<feOffset dx="42" dy="4"/>
+<feGaussianBlur stdDeviation="13.5"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_154_98"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_154_98" result="shape"/>
+<feGaussianBlur stdDeviation="150" result="effect2_foregroundBlur_154_98"/>
+</filter>
+</defs>
+</svg>

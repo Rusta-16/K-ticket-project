@@ -1,0 +1,103 @@
+@use "_project-variables" as *;
+
+.photoPage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 clamp(1rem, 5vw, 3.75rem);
+
+    #line {
+        align-self: flex-start;
+        width: 90%;
+        margin: clamp(0rem, -0.913rem + 4.17vw, 3rem) 0 clamp(0rem, -0.913rem + 4.17vw, 3rem) 0;
+    }
+
+    .photoBlock {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding: 0 10px;
+        /* небольшой отступ для красоты */
+    }
+
+    /* Swiper */
+    .swiper {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .slide {
+        // padding: clamp(1.59rem, 1.1rem + 2.24vw, 3.2rem);
+        padding-bottom: 0.5rem;
+        box-sizing: border-box;
+    }
+
+    .imageWrapper {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/20;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    h2 {
+        color: $font-main-color;
+        font-weight: 400;
+        text-align: center;
+        font-size: clamp(1.35rem, 1rem + 1.6vw, 2.5rem);
+        margin-top: 1rem;
+    }
+
+    /* Стрелки */
+    #arrowLeft {
+        position: absolute;
+        top: 55%;
+        z-index: 20;
+        border-radius: 50%;
+        max-width: 1rem !important;
+        aspect-ratio: 1 / 1;
+    }
+
+    #arrowRight {
+        position: absolute;
+        top: 55%;
+        z-index: 20;
+        border-radius: 50%;
+        max-width: 1rem !important;
+        aspect-ratio: 1 / 1;
+    }
+
+    #arrowLeft {
+        left: 1%;
+    }
+
+    #arrowRight {
+        right: 1%;
+    }
+
+    /* Glass эффект */
+    .glass {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: rgba(0, 0, 0, 0.09);
+        border-radius: 10px;
+        border: 0.4px solid rgba(88, 88, 88, 0.219);
+        box-shadow:
+            0 4px 32px 0 rgba(0, 0, 0, 0.35),
+            0 0px 0.5px 0.5px rgba(190, 190, 190, 0.02),
+            inset 0 0.5px 1px rgba(255, 255, 255, 0.20),
+            inset 0.5px 0px 0px rgba(255, 255, 255, 0.20),
+            inset 0 -3px 2px rgba(0, 0, 0, 0.35);
+
+        filter: blur(0.5px);
+        -webkit-mask:
+            radial-gradient(circle 1.4rem at left center, transparent 98%, black 100%),
+            radial-gradient(circle 1.4rem at right center, transparent 98%, black 100%),
+            linear-gradient(black, black);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+    }
+}
