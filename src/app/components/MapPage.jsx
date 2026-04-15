@@ -331,7 +331,7 @@ export default function MapPage() {
                                             </div>
 
                                             <div><strong>Места:</strong> {selectedSeats.length > 0 ? selectedSeats.join(', ') : 'Не выбраны'}</div>
-                                            <div>{selec}</div>
+                                            <div>{selectedTime}</div>
                                             <div><strong>Цена:</strong> {selectedSeats.length * ticketPrice} руб.</div>
                                         </div>
                                     </div>
