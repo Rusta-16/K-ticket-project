@@ -31,8 +31,8 @@ export async function POST(req) {
         const body = await req.json()
 
         // Используем тестовые ключи из документации
-        const terminalKey = "1775577882974DEMO"
-        const password = "rje*%G#ENQs**v^k"
+        const terminalKey = "1775577883017"
+        const password = "z_%xYMUu!Kt$oEaE"
 
         // Сначала формируем payload БЕЗ токена
         const payloadWithoutToken = {

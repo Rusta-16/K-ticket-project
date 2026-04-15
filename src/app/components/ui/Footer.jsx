@@ -41,7 +41,7 @@ export default function Footer() {
                     <p>Контакты</p>
                     <div>
                         <Image src={`./phone.svg`} width={20} height={20} alt='phone' />
-                        <p>89508540417</p>
+                        <a href="">89508540417</a>
                     </div>
                     <div>
                         <Image src={`./placeLoc.svg`} width={20} height={20} alt='email' />

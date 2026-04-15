@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 export default function MapPage() {
     const [selectedlocation, setSelectedlocation] = useState([
-        { location: 'Ростов-на-дону', time: [ '15:30', '20:00'] },
-        { location: 'Волгодонск', time: ['12:00', '18:30'] }
+        { location: 'Ростов-на-дону', time: ['9:00', '12:00', '15:30', '18:30'] },
+        { location: 'Волгодонск', time: ['9:00', '12:00', '15:30', '18:30'] }
     ])
 
     function changeCity() {
@@ -18,8 +18,8 @@ export default function MapPage() {
     const [isOpen, setIsOpen] = useState(false)
     const [step, setStep] = useState(1)
     const [selectedDay, setSelectedDay] = useState(null)
-    const [selectedSeats, setSelectedSeats] = useState([])
     const [selectedTime, setSelectedTime] = useState(null)
+    const [selectedSeats, setSelectedSeats] = useState([])
 
     const [formData, setFormData] = useState({
         fio: '',
@@ -179,7 +179,7 @@ export default function MapPage() {
                     <div className="glass"></div>
                 </div>
             </div>
-            <Image src='/routeLine.png' width={100} height={100} id='routeLine' alt='lineRoute' />
+            <Image src='/RouteLine.svg' width={100} height={100} id='routeLine' alt='lineRoute' />
             <div className="timeWithBut">
 
                 <div className="timeWithPrice">
@@ -219,23 +219,47 @@ export default function MapPage() {
                                         id='sell'
                                         onClick={() => setStep(2)}
                                     >
-                                        Купить билет →
+                                        Продолжить →
                                     </button>
                                 </div>
                             )}
                             {step === 2 && (
                                 <div className="step">
-                                    <p>Выберите время отправления из</p>
-                                    <p>{selectedlocation[0].location}</p>
-                                    {selectedlocation[0].time.map((item,id)=>(
-                                        <button key={id} onClick={()=>setSelectedTime(item)} className='mainButton'>
-                                            {item}
-                                        </button>
-                                    ))}
+                                    <p>Выберите время отправления из {selectedlocation[0].location}</p>
+                                    
+                                    <div className="timeGrid" style={{
+                                        display: 'grid',
+                                        gridTemplateColumns: 'repeat(2, 1fr)',
+                                        gap: '10px',
+                                        marginTop: '20px'
+                                    }}>
+                                        {selectedlocation[0].time.map((time, i) => (
+                                            <button
+                                                key={i}
+                                                className={`timeCard ${selectedTime === time ? 'active' : ''}`}
+                                                onClick={() => setSelectedTime(time)}
+                                                style={{
+                                                    padding: '12px',
+                                                    border: '1px solid #B28F42',
+                                                    borderRadius: '8px',
+                                                    background: selectedTime === time ? '#B28F42' : 'transparent',
+                                                    color: selectedTime === time ? 'white' : '#B28F42',
+                                                    cursor: 'pointer',
+                                                    fontSize: '16px',
+                                                    fontWeight: '500'
+                                                }}
+                                            >
+                                                {time}
+                                            </button>
+                                        ))}
+                                    </div>
+
                                     <button
                                         className="mainButton"
                                         id='sell'
                                         onClick={() => setStep(3)}
+                                        disabled={!selectedTime}
+                                        style={{ marginTop: '20px' }}
                                     >
                                         Продолжить →
                                     </button>
@@ -245,10 +269,9 @@ export default function MapPage() {
                                     >
                                         ← Назад к выбору даты
                                     </button>
-
                                 </div>
-                            )
-                            }
+                            )}
+                            
                             {step === 3 && (
                                 <div className="step">
                                     <p>Выберите места</p>
@@ -307,10 +330,11 @@ export default function MapPage() {
                                         className="backButton"
                                         onClick={() => setStep(2)}
                                     >
-                                        ← Назад к выбору даты
+                                        ← Назад к выбору времени
                                     </button>
                                 </div>
                             )}
+                            
                             {step === 4 && (
                                 <div className="step">
                                     <p>Оформление билета</p>
@@ -328,9 +352,10 @@ export default function MapPage() {
                                                         : 'Не выбрана'
                                                 }
                                             </div>
+                                            
+                                            <div><strong>Время отправления:</strong> {selectedTime || 'Не выбрано'}</div>
 
                                             <div><strong>Места:</strong> {selectedSeats.length > 0 ? selectedSeats.join(', ') : 'Не выбраны'}</div>
-                                            <div>{selec}</div>
                                             <div><strong>Цена:</strong> {selectedSeats.length * ticketPrice} руб.</div>
                                         </div>
                                     </div>
