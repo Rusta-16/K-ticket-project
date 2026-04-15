@@ -179,7 +179,7 @@ export default function MapPage() {
                     <div className="glass"></div>
                 </div>
             </div>
-            <Image src='/routeLine.png' width={100} height={100} id='routeLine' alt='lineRoute' />
+            <Image src={'/routeLine.png'} width={100} height={100} id='routeLine' alt='lineRoute' />
             <div className="timeWithBut">
 
                 <div className="timeWithPrice">
