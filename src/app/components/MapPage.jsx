@@ -306,7 +306,7 @@ export default function MapPage() {
                                     </button>
                                     <button
                                         className="backButton"
-                                        onClick={() => setStep(2)}
+                                        onClick={() => setStep(4)}
                                     >
                                         ← Назад к выбору даты
                                     </button>
