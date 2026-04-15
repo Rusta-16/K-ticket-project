@@ -201,6 +201,7 @@ export default function MapPage() {
                             {step === 1 && (
                                 <div className="step">
                                     <p>Выберите дату</p>
+                                    <p>Апрель</p>
                                     <div className="calendarGrid">
                                         {days.map((item, i) => (
                                             <button
