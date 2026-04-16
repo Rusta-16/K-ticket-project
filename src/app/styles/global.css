@@ -317,20 +317,88 @@ header #LinkForBurgerMenu.open .burgerMenuIcon {
 
 .ticketPanel {
   overflow: hidden;
-  margin-top: 20px;
-  padding: 20px;
+  margin-top: clamp(1.25rem, 0.489rem + 3.48vw, 3.75rem);
+  width: 85vw;
+  padding: clamp(1rem, 0.087rem + 4.17vw, 4rem);
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #191616;
   backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: clamp(1rem, 0.543rem + 2.09vw, 2.5rem);
 }
-
-.step {
+.ticketPanel #sell {
+  margin-top: clamp(0.5rem, -0.474rem + 4.45vw, 3.7rem);
+}
+.ticketPanel .step {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+.ticketPanel .step p {
+  font-family: 650;
+  font-size: clamp(1rem, 0.087rem + 4.17vw, 4rem);
+}
+.ticketPanel .step .calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: clamp(0.35rem, 1.6vw, 1.5rem);
+  margin-top: 10px;
+}
+.ticketPanel .step .calendarGrid .dayCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: clamp(2.1rem, -0.304rem + 10.99vw, 10rem);
+  height: clamp(2.3rem, -0.135rem + 11.13vw, 10.3rem);
+  border-radius: 10px;
+  background: transparent;
+  border: 2px solid rgba(178, 143, 66, 0.5);
+  color: rgba(255, 192, 69, 0.85);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.ticketPanel .step .calendarGrid .dayCard .day {
+  position: absolute;
+  font-size: clamp(0.6rem, 0.174rem + 1.95vw, 2rem);
+  opacity: 0.7;
+  text-transform: lowercase;
+  top: 0;
+  right: 0;
+  color: #d9d9d9;
+  transition: all 0.3s ease-in-out;
+}
+.ticketPanel .step .calendarGrid .dayCard .day:hover {
+  color: #191616;
+}
+.ticketPanel .step .calendarGrid .dayCard .date {
+  font-size: clamp(1rem, -0.217rem + 5.57vw, 5rem);
+  font-weight: 500;
+}
+.ticketPanel .step .calendarGrid .dayCard:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 192, 69, 0.85);
+  color: #191616;
+  border: 5px solid rgba(186, 186, 186, 0.8);
+  box-shadow: 0 0 10px rgba(178, 143, 66, 0.6);
+}
+.ticketPanel .step .calendarGrid .dayCard.active {
+  transform: translateY(-5px);
+  background: rgba(255, 192, 69, 0.85);
+  color: #191616;
+  border: 5px solid rgba(186, 186, 186, 0.8);
+  box-shadow: 0 0 10px rgba(178, 143, 66, 0.6);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6), 0 0 16px rgba(178, 143, 66, 0.4);
+  transform: scale(1.05);
+}
+
+#Seat {
+  width: clamp(4rem, 2.783rem + 5.57vw, 8rem);
+  height: clamp(5.7rem, 4.178rem + 6.96vw, 10.7rem);
 }
 
 .input {
@@ -338,6 +406,83 @@ header #LinkForBurgerMenu.open .burgerMenuIcon {
   border-radius: 8px;
   border: none;
   outline: none;
+}
+
+.bookingSummary {
+  background: #252525;
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+}
+
+.bookingSummary h3 {
+  margin-bottom: 15px;
+  color: #D9D9D9;
+  text-align: center;
+}
+
+.summaryInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 1.05rem;
+}
+.summaryInfo strong {
+  color: rgba(255, 192, 69, 0.85);
+}
+
+.passengerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  padding: 0 clamp(1rem, 0.087rem + 4.17vw, 4rem);
+  justify-content: center;
+  align-items: center;
+}
+.passengerForm .formGroup {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  gap: 6px;
+}
+.passengerForm .formGroup input {
+  border-radius: 20px;
+  text-align: center;
+  width: 100%;
+  font-size: 0.9rem;
+  border: 2px solid rgba(178, 143, 66, 0.8);
+  background-color: #191616;
+  color: #d9d9d9;
+}
+
+.error {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  margin-left: 4px;
+}
+
+.backButton {
+  margin-top: 10px;
+  background: transparent;
+  border: none;
+  color: #aaa;
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+}
+.backButton:hover {
+  color: #D9D9D9;
+}
+
+.seatMapContainer {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+#SalonW {
+  width: clamp(18rem, 8.87rem + 41.74vw, 48rem);
+  height: clamp(25rem, 15.87rem + 41.74vw, 55rem);
 }
 
 .photoPage {
@@ -438,6 +583,8 @@ header #LinkForBurgerMenu.open .burgerMenuIcon {
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
   gap: clamp(0.5rem, 0.196rem + 1.39vw, 1.5rem);
 }
 .conditionsPage .textWithIcon img {
@@ -487,11 +634,61 @@ header #LinkForBurgerMenu.open .burgerMenuIcon {
   display: flex;
   visibility: visible;
   opacity: 1;
+  align-items: center;
+}
+.additional-conditions.show h1 {
+  font-size: clamp(0.86rem, 0.057rem + 3.67vw, 3.5rem);
+  color: #d9d9d9;
+}
+.additional-conditions.show #t4 {
+  padding-right: 0;
+  align-self: center;
+}
+.additional-conditions.show #t5 {
+  padding-left: clamp(1.1rem, -1.061rem + 9.88vw, 8.2rem);
+}
+.additional-conditions.show #t5 h1 {
+  width: 80%;
+  font-size: clamp(0.86rem, 0.057rem + 3.67vw, 3.5rem);
+  color: #d9d9d9;
+}
+.additional-conditions.show #t6 {
+  padding-left: clamp(1.1rem, -1.061rem + 9.88vw, 8.2rem);
+  align-self: flex-end;
+  gap: 0;
+}
+.additional-conditions.show #t6 h1 {
+  width: 78%;
+}
+.additional-conditions.show #t7 {
+  padding-left: clamp(1.1rem, -1.061rem + 9.88vw, 8.2rem);
+  align-self: flex-start;
+}
+.additional-conditions.show #line {
+  align-self: flex-start;
+  width: 90%;
+  margin: clamp(0rem, -0.913rem + 4.17vw, 3rem) 0 clamp(0rem, -0.913rem + 4.17vw, 3rem) 0;
+}
+.additional-conditions.show svg {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+}
+.additional-conditions.show {
+  /* Делаем толщину линии адаптивной */
+}
+.additional-conditions.show path {
+  stroke-width: clamp(0.125rem, 0.049rem + 0.35vw, 0.375rem) !important;
 }
 
 #svgFinal {
+  display: none;
   opacity: 0;
   visibility: hidden;
+}
+
+#m1 {
+  margin-top: 1rem;
 }
 
 footer {
@@ -500,6 +697,7 @@ footer {
   bottom: 0;
   flex-direction: column;
   align-items: center;
+  background-image: url("/BackFooter.svg");
   background-repeat: no-repeat;
   background-size: cover;
   box-sizing: border-box;
@@ -508,12 +706,22 @@ footer {
   font-size: clamp(0.6rem, 0.174rem + 1.95vw, 2rem);
   color: #d9d9d9;
   padding: 1rem clamp(1rem, 4vw, 3.75rem);
+  padding-top: clamp(1.25rem, 0.717rem + 2.43vw, 3rem);
+  margin-top: clamp(2rem, 0.783rem + 5.57vw, 6rem);
 }
 footer .logoWithDesc {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: clamp(1.5rem, 0.739rem + 3.48vw, 4rem);
+}
+footer .logoWithDesc .LinkForLogo {
+  align-self: center;
+}
+footer .logoWithDesc .LinkForLogo .logoIcon {
+  width: clamp(7.5rem, 4.773rem + 13.64vw, 15rem);
+  height: auto;
 }
 footer .logoWithDesc p {
   display: inline-block;
@@ -528,19 +736,41 @@ footer .navigation {
   width: 100%;
   flex-direction: row;
   justify-content: center;
-  gap: 1rem;
+  gap: clamp(1rem, -6.304rem + 33.39vw, 25rem);
 }
 footer .navigation .columnNav {
   display: flex;
   flex-direction: column;
 }
+footer .navigation .columnNav p {
+  align-self: center;
+  margin-bottom: clamp(0.3rem, 0.087rem + 0.97vw, 1rem);
+}
+footer .navigation .columnNav a {
+  text-decoration: none;
+  color: rgba(179, 179, 179, 0.862745098);
+  text-align: center;
+}
+footer .navigation .columnNav a:hover {
+  color: rgba(255, 192, 69, 0.85);
+  transition: all 0.3s ease;
+}
 footer .navigation .contacts {
   display: flex;
   flex-direction: column;
 }
+footer .navigation .contacts p {
+  align-self: center;
+  margin-bottom: clamp(0.3rem, 0.087rem + 0.97vw, 1rem);
+}
 footer .navigation .contacts div {
   display: flex;
   flex-direction: row;
+  gap: clamp(0.2rem, -0.043rem + 1.11vw, 1rem);
+}
+footer .navigation .contacts div img {
+  height: clamp(0.85rem, 0.348rem + 2.3vw, 2.5rem);
+  width: clamp(0.85rem, 0.348rem + 2.3vw, 2.5rem);
 }
 footer #line {
   margin-top: 1rem;
@@ -584,6 +814,8 @@ body {
   flex-direction: column;
   background-color: #191616;
   width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
   font-family: var(--font-exo2);
   position: relative;
   overflow-x: hidden;
@@ -608,7 +840,7 @@ body {
 }
 
 #el2 {
-  top: 260vw;
+  top: clamp(50rem, 19.565rem + 139.13vw, 150rem);
   right: -80vw;
 }
 
