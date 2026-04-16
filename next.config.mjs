@@ -3,11 +3,9 @@ const nextConfig = {
   reactCompiler: true,
 
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "**",
-      },
+    domains: [
+      "k-ticket-project.vercel.app",
+      "xn----clcqoiid5avq1l.xn--p1ai",
     ],
   },
 };
