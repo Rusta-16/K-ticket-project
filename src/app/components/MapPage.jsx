@@ -331,7 +331,9 @@ export default function MapPage() {
                                             </div>
 
                                             <div><strong>Места:</strong> {selectedSeats.length > 0 ? selectedSeats.join(', ') : 'Не выбраны'}</div>
-                                            <div>{selectedTime}</div>
+                                            <div><strong>Время:</strong>{selectedTime}</div>
+                                            <div><strong>Место посадки:</strong><a href="https://yandex.ru/maps/-/CPvvuZ1f">ул.Красноармейская 3б</a></div>
+                                            <div><strong>Место Высадки:</strong><a href="https://yandex.ru/maps/-/CPvvuG3V">ул. отс.Вокзал улица морская</a></div>
                                             <div><strong>Цена:</strong> {selectedSeats.length * ticketPrice} руб.</div>
                                         </div>
                                     </div>

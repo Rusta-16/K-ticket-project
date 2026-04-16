@@ -33,3 +33,6 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+/src/generated/prisma
+
+/generated/prisma

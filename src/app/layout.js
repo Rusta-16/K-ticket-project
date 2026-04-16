@@ -7,9 +7,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ru" className={exo2.variable}>
       <body>
-        <Header></Header>
         <main>{children}</main>
-        <Footer></Footer>
       </body>
     </html>
   );

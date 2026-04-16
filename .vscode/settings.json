@@ -2,5 +2,6 @@
     "workbench.colorCustomizations": {
         "editor.selectionBackground": "#ff262663", // 88 в конце = прозрачность
         "editor.selectionForeground": "#ffffff"
-    }
+    },
+    "prisma.pinToPrisma6": false
 }

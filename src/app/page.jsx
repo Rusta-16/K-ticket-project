@@ -3,12 +3,16 @@ import MapPage from "./components/MapPage";
 import PhotoPage from "./components/PhotoPage";
 import ServicePage from "./components/ServicePage";
 import StartPage from "./components/StartPage";
+import Footer from "./components/ui/Footer";
+import Header from "./components/ui/Header";
 import ConditionsPage from "./components/СonditionsPage";
 
 export default function Home() {
     
     return (
+        
         <div>
+            <Header></Header>
             <StartPage />
             <div className="ellipse" id="el1"></div>
             <section id="advantages"><ServicePage></ServicePage></section>
@@ -16,6 +20,7 @@ export default function Home() {
             <section id="route"><MapPage></MapPage></section>
             <section id="photo"><PhotoPage></PhotoPage></section>
             <section id="conditions"><ConditionsPage></ConditionsPage></section>
+            <Footer></Footer>
         </div>
     )
 }
