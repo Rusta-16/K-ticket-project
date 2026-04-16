@@ -18,7 +18,7 @@ export default function PhotoPage() {
 
     return (
         <div className='photoPage'>
-            <Image src="./Line.svg" width={400} height={70} id='line' alt='line' />
+            <Image src="/Line.svg" width={400} height={70} id='line' alt='line' />
 
             <div className="photoBlock">
                 <Swiper

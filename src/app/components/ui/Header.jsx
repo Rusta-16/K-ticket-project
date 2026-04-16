@@ -42,7 +42,7 @@ export default function Header() {
                     <Image src={`лого.svg`} width={1} height={1} alt='логотип' className='logoIcon' />
                 </Link>
                 <button id='LinkForBurgerMenu' className={showHumburgerMenu ? 'open' : ''} onClick={handelNav}>
-                    <Image src={`Vector.svg`} width={1} height={1} alt='burgerIcon' className='burgerMenuIcon' />
+                    <Image src={`/Vector.svg`} width={1} height={1} alt='burgerIcon' className='burgerMenuIcon' />
                 </button>
                 <nav className={showHumburgerMenu ? 'mobileNav' : ''}>
                     {
