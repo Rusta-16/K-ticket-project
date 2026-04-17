@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function MapPage({ initialSelectedLocation }) {
@@ -12,9 +12,6 @@ export default function MapPage({ initialSelectedLocation }) {
             prev[1],
             prev[0]
         ])
-    }
-    const isBooked = (seatId) => {
-        return bookedSeats.includes(seatId)
     }
     const [isOpen, setIsOpen] = useState(false)
     const [step, setStep] = useState(1)
@@ -34,23 +31,45 @@ export default function MapPage({ initialSelectedLocation }) {
         phone: ''
     })
 
-    const days = Array.from({ length: 14 }, (_, i) => {
-        const d = new Date()
-        d.setDate(d.getDate() + i)
+    // const days = Array.from({ length: 14 }, (_, i) => {
+    //     const d = new Date()
+    //     d.setDate(d.getDate() + i)
 
-        return {
-            day: d.toLocaleDateString('ru-RU', { weekday: 'short' }),
-            date: d.getDate()
+    //     return {
+    //         day: d.toLocaleDateString('ru-RU', { weekday: 'short' }),
+    //         date: d.getDate()
+    //     }
+    // })
+    const [bookedSeats, setBookedSeats] = useState([])
+    const days = [
+        { day: 'сб', date: 17 },
+        { day: 'вс', date: 18 },
+        { day: 'пн', date: 19 }
+    ]
+    React.useEffect(() => {
+        if (selectedDay === null || !selectedTime) return;
+
+        const key = `seats-${selectedDay}-${selectedTime}`;
+        const saved = localStorage.getItem(key);
+
+        if (saved) {
+            setBookedSeats(JSON.parse(saved));
+        } else {
+            setBookedSeats([]);
         }
-    })
-
+    }, [selectedDay, selectedTime]);
+    const isBooked = (seatId) => {
+        return bookedSeats.includes(seatId)
+    }
     const toggleSeat = (seatId) => {
+        if (isBooked(seatId)) return;
+
         setSelectedSeats(prev =>
             prev.includes(seatId)
                 ? prev.filter(s => s !== seatId)
                 : [...prev, seatId]
-        )
-    }
+        );
+    };
 
     const seats = [
         { id: 'Переднее кресло', src: '/Переднее кресло.png', label: 'Пассажир', top: '42%', left: '51%' },
@@ -93,6 +112,12 @@ export default function MapPage({ initialSelectedLocation }) {
     }
 
     const handleInputChange = (e) => {
+        const key = `seats-${selectedDay}-${selectedTime}`;
+        const existing = JSON.parse(localStorage.getItem(key) || '[]');
+
+        const updated = [...new Set([...existing, ...selectedSeats])];
+
+        localStorage.setItem(key, JSON.stringify(updated));
         const { name, value } = e.target
         setFormData(prev => ({ ...prev, [name]: value }))
         if (errors[name]) {
@@ -180,7 +205,7 @@ export default function MapPage({ initialSelectedLocation }) {
                     <div className="glass"></div>
                 </div>
             </div>
-            <Image src={'/routeLine.png'} width={100} height={100} id='routeLine' alt='lineRoute' />
+            {/* <Image src={'/routeLine.png'} width={100} height={100} id='routeLine' alt='lineRoute' /> */}
             <div className="timeWithBut">
 
                 <div className="timeWithPrice">
@@ -264,33 +289,61 @@ export default function MapPage({ initialSelectedLocation }) {
                                             id='SalonW'
                                         />
 
-                                        {seats.map(seat => (
-                                            <motion.div
-                                                key={seat.id}
-                                                className={`seat ${selectedSeats.includes(seat.id) ? 'selected' : ''}`}
-                                                style={{
-                                                    position: 'absolute',
-                                                    top: seat.top,
-                                                    left: seat.left,
-                                                    transform: 'translate(-30%, -30%)',
-                                                    cursor: 'pointer',
-                                                    zIndex: 10,
-                                                }}
-                                                whileHover={{ scale: 1.1, y: -10, filter: 'brightness(1.15)' }}
-                                                whileTap={{ scale: 0.95 }}
-                                                transition={{ type: "spring", stiffness: 500, damping: 45 }}
-                                                onClick={() => toggleSeat(seat.id)}
-                                            >
-                                                <Image
-                                                    src={seat.src}
-                                                    alt={seat.label}
-                                                    id='Seat'
-                                                    width={200}
-                                                    height={200}
-                                                    style={{ filter: selectedSeats.includes(seat.id) ? 'drop-shadow(0 15px 20px rgba(178,143,66,0.6))' : 'none' }}
-                                                />
-                                            </motion.div>
-                                        ))}
+                                        {seats.map(seat => {
+                                            const booked = isBooked(seat.id)
+
+                                            return (
+                                                <motion.div
+                                                    key={seat.id}
+                                                    className={`seat ${selectedSeats.includes(seat.id) ? 'selected' : ''}`}
+                                                    style={{
+                                                        position: 'absolute',
+                                                        top: seat.top,
+                                                        left: seat.left,
+                                                        transform: 'translate(-30%, -30%)',
+                                                        cursor: booked ? 'not-allowed' : 'pointer',
+                                                        zIndex: 10,
+                                                        opacity: booked ? 0.6 : 1
+                                                    }}
+                                                    whileHover={!booked ? { scale: 1.1, y: -10, filter: 'brightness(1.15)' } : {}}
+                                                    whileTap={!booked ? { scale: 0.95 } : {}}
+                                                    transition={{ type: "spring", stiffness: 500, damping: 45 }}
+                                                    onClick={() => toggleSeat(seat.id)}
+                                                >
+                                                    {/* САМО КРЕСЛО */}
+                                                    <Image
+                                                        src={seat.src}
+                                                        alt={seat.label}
+                                                        id='Seat'
+                                                        width={200}
+                                                        height={200}
+                                                        style={{
+                                                            filter: selectedSeats.includes(seat.id)
+                                                                ? 'drop-shadow(0 15px 20px rgba(178,143,66,0.6))'
+                                                                : 'none'
+                                                        }}
+                                                    />
+
+                                                    {/* 🔴 ЗАМОК */}
+                                                    {booked && (
+                                                        <Image
+                                                            src="/lock.svg"
+                                                            alt="locked"
+                                                            width={40}
+                                                            height={40}
+                                                            style={{
+                                                                position: 'absolute',
+                                                                top: '30%',
+                                                                left: '30%',
+                                                                transform: 'translate(-50%, -50%)',
+                                                                zIndex: 20,
+                                                                pointerEvents: 'none'
+                                                            }}
+                                                        />
+                                                    )}
+                                                </motion.div>
+                                            )
+                                        })}
                                     </div>
 
                                     <div style={{ marginTop: '20px', textAlign: 'center' }}>
