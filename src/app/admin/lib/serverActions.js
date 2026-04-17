@@ -1,36 +1,66 @@
 'use server'
-import { revalidatePath } from "next/cache"
-import { prisma } from "./prisma"
-import { redirect } from "next/navigation"
 
+import { prisma } from './prisma'
+import { revalidatePath } from 'next/cache'
 
-export async function createRouteWithTrips(formData) {
-    const from = formData.get('from')
-    const to = formData.get('to')
-    const scheduleRaw = formData.get('schedule')
+// фиксированные рейсы
+const ROUTES = [
+  {
+    from: 'Ростов-на-Дону',
+    to: 'Волгодонск',
+    times: ['09:00', '15:30']
+  },
+  {
+    from: 'Волгодонск',
+    to: 'Ростов-на-Дону',
+    times: ['12:00', '18:30']
+  }
+]
 
-    if (!from || !to || !scheduleRaw) {
-        throw new Error('Missing data')
-    }
+// создать расписание на 14 дней
+export async function seedTrips() {
+  const routeList = await prisma.route.findMany()
 
-    const schedule = JSON.parse(scheduleRaw)
+  if (routeList.length === 0) {
+    for (const r of ROUTES) {
+      const route = await prisma.route.create({
+        data: { from: r.from, to: r.to }
+      })
 
-    const route = await prisma.route.create({
-        data: { from, to }
-    })
+      for (let i = 0; i < 14; i++) {
+        const date = new Date()
+        date.setDate(date.getDate() + i)
 
-    for (const [date, times] of Object.entries(schedule)) {
-        for (const time of times) {
-            await prisma.trip.create({
-                data: {
-                    date: new Date(date),
-                    time,
-                    routeId: route.id
-                }
-            })
+        for (const time of r.times) {
+          await prisma.trip.create({
+            data: {
+              date,
+              time,
+              routeId: route.id
+            }
+          })
         }
+      }
     }
+  }
+}
 
-    revalidatePath('/admin')
-    redirect('/admin')
+// бронь места
+export async function bookSeat({ tripId, seatKey, email }) {
+  const seat = await prisma.seat.findFirst({
+    where: { tripId, seatKey }
+  })
+
+  if (seat?.booked) {
+    throw new Error('Место уже занято')
+  }
+
+  return prisma.seat.create({
+    data: {
+      tripId,
+      seatKey,
+      booked: true,
+      email
+    }
+  })
 }

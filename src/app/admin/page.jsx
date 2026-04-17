@@ -1,9 +1,12 @@
 import Link from 'next/link'
 import React from 'react'
 import AllRoutes from './components/AllRoutes'
-
-export default function page() {
+export const dynamic = "force-dynamic";
+export default function Page() {
+  
   return (
+
+
     <div>
         <header>
             <div className="logo"></div>

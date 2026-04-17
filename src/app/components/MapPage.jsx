@@ -8,10 +8,13 @@ export default function MapPage({ initialSelectedLocation }) {
     const [selectedlocation, setSelectedlocation] = useState(initialSelectedLocation || []);
     console.log('SelectiomLoc: ', selectedlocation)
     function changeCity() {
-        setSelectedlocation(prev => [ 
+        setSelectedlocation(prev => [
             prev[1],
             prev[0]
         ])
+    }
+    const isBooked = (seatId) => {
+        return bookedSeats.includes(seatId)
     }
     const [isOpen, setIsOpen] = useState(false)
     const [step, setStep] = useState(1)
