@@ -68,11 +68,15 @@ export default function CreateRoutePage() {
     }
     async function handleSubmit(e) {
         e.preventDefault()
+
         const formData = new FormData()
+
         formData.append('from', city[0].name)
         formData.append('to', city[1].name)
+
         formData.append('schedule', JSON.stringify(schedule))
-        const result = await createRouteWithTrips(formData)
+
+        await createRouteWithTrips(formData)
     }
     return (
         <div className='createPage'>

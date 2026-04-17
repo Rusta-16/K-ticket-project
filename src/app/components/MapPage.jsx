@@ -3,12 +3,10 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-export default function MapPage() {
-    const [selectedlocation, setSelectedlocation] = useState([
-        { location: 'Ростов-на-дону', time: [ '15:30', '20:00'] },
-        { location: 'Волгодонск', time: ['12:00', '18:30'] }
-    ])
+export default function MapPage({ initialSelectedLocation }) {
 
+    const [selectedlocation, setSelectedlocation] = useState(initialSelectedLocation || []);
+    console.log('SelectiomLoc: ', selectedlocation)
     function changeCity() {
         setSelectedlocation(prev => [
             prev[1],
@@ -179,7 +177,7 @@ export default function MapPage() {
                     <div className="glass"></div>
                 </div>
             </div>
-            {/* <Image src={'/routeLine.png'} width={100} height={100} id='routeLine' alt='lineRoute' /> */}
+            <Image src={'/routeLine.png'} width={100} height={100} id='routeLine' alt='lineRoute' />
             <div className="timeWithBut">
 
                 <div className="timeWithPrice">
@@ -228,8 +226,8 @@ export default function MapPage() {
                                 <div className="step">
                                     <p>Выберите время отправления из</p>
                                     <p>{selectedlocation[0].location}</p>
-                                    {selectedlocation[0].time.map((item,id)=>(
-                                        <button key={id} onClick={()=>setSelectedTime(item)} className='mainButton'>
+                                    {selectedlocation[0].time.map((item, id) => (
+                                        <button key={id} onClick={() => setSelectedTime(item)} className='mainButton'>
                                             {item}
                                         </button>
                                     ))}
@@ -306,9 +304,9 @@ export default function MapPage() {
                                     </button>
                                     <button
                                         className="backButton"
-                                        onClick={() => setStep(4)}
+                                        onClick={() => setStep(2)}
                                     >
-                                        ← Назад к выбору даты
+                                        ← Назад к выбору времени
                                     </button>
                                 </div>
                             )}

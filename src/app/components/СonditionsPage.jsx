@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image'
 import { title } from 'process'
 import React, { useState } from 'react'
