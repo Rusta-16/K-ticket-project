@@ -26,10 +26,8 @@ export async function POST(req) {
     try {
         const body = await req.json();
 
-        const terminalKey = "1775577882974DEMO";
-        const password = "rje*%G#ENQs**v^k";
-        // const terminalKey = "1775577883017";
-        // const password = "z_%xYMUu!Kt$oEaE";
+        const terminalKey = 1775577883017;
+        const password = 'z_%xYMUu!Kt$oEaE'
         const payloadWithoutToken = {
             TerminalKey: terminalKey,
             Amount: body.amount,

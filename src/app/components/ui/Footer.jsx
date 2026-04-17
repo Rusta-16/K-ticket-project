@@ -39,17 +39,28 @@ export default function Footer() {
                 </nav>
                 <nav className='contacts'>
                     <p>Контакты</p>
-                    <div>
+                    <div className="contactItem">
                         <Image src={`./phone.svg`} width={20} height={20} alt='phone' />
-                        <a href="">89508540417</a>
+                        <a href="tel:89508540417" className="contactLink">
+                            89508540417
+                        </a>
                     </div>
-                    <div>
-                        <Image src={`./placeLoc.svg`} width={20} height={20} alt='email' />
-                        <p>Ростов-на-Дону</p>
+
+                    <div className="contactItem">
+                        <Image src={`./placeLoc.svg`} width={20} height={20} alt='location' />
+                        <p className="contactText">Ростов-на-Дону</p>
                     </div>
-                    <div>
+
+                    <div className="contactItem">
                         <Image src={`./vk (2).svg`} width={20} height={20} alt='vk' />
-                        <a>https://vk.ru/club236584175</a>
+                        <a
+                            href="https://vk.ru/club236584175"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="contactLink"
+                        >
+                            vk.ru/club236584175
+                        </a>
                     </div>
                 </nav>
             </div>

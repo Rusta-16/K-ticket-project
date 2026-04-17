@@ -185,7 +185,27 @@ export default function MapPage({ initialSelectedLocation }) {
         }
     };
     const ticketPrice = 2500
+    const isFromVolgodonsk = selectedlocation?.[0]?.location === 'Волгодонск';
 
+    const boardingPoint = isFromVolgodonsk
+        ? {
+            name: 'ул. отс.Вокзал улица морская',
+            link: 'https://yandex.ru/maps/-/CPvvuG3V'
+        }
+        : {
+            name: 'ул.Красноармейская 3б',
+            link: 'https://yandex.ru/maps/-/CPvvuZ1f'
+        };
+
+    const dropPoint = isFromVolgodonsk
+        ? {
+            name: 'ул.Красноармейская 3б',
+            link: 'https://yandex.ru/maps/-/CPvvuZ1f'
+        }
+        : {
+            name: 'ул. отс.Вокзал улица морская',
+            link: 'https://yandex.ru/maps/-/CPvvuG3V'
+        };
     return (
         <div className='mapPage'>
             <Image src={`./Line.svg`} width={400} height={70} id='line' alt='line' />
@@ -403,8 +423,29 @@ export default function MapPage({ initialSelectedLocation }) {
 
                                             <div><strong>Места:</strong> {selectedSeats.length > 0 ? selectedSeats.join(', ') : 'Не выбраны'}</div>
                                             <div><strong>Время:</strong>{selectedTime}</div>
-                                            <div><strong>Место посадки:</strong><a href="https://yandex.ru/maps/-/CPvvuZ1f">ул.Красноармейская 3б</a></div>
-                                            <div><strong>Место Высадки:</strong><a href="https://yandex.ru/maps/-/CPvvuG3V">ул. отс.Вокзал улица морская</a></div>
+                                            <div className='contactItem'>
+                                                <strong>Место посадки:</strong>
+                                                <a
+                                                    href={boardingPoint.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="locationButton"
+                                                >
+                                                    {boardingPoint.name}
+                                                </a>
+                                            </div>
+
+                                            <div className='contactItem'>
+                                                <strong>Место высадки:</strong>
+                                                <a
+                                                    href={dropPoint.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="locationButton"
+                                                >
+                                                    {dropPoint.name}
+                                                </a>
+                                            </div>
                                             <div><strong>Цена:</strong> {selectedSeats.length * ticketPrice} руб.</div>
                                         </div>
                                     </div>

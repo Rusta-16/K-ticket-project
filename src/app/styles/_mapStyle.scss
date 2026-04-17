@@ -346,3 +346,61 @@
     width: clamp(18rem, 8.87rem + 41.74vw, 48rem);
     height: clamp(25rem, 15.87rem + 41.74vw, 55rem);
 }
+.contactItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    border: 1px solid $gradient-backgraund-but;
+    border-radius: 30px;
+}
+
+.contactLink {
+    color: rgba(255, 255, 255, 0.75); /* мягкий белый */
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.contactLink:hover {
+    color: #ffffff;
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.contactText {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 14px;
+    margin: 0;
+}
+
+.locationButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 12px;
+    margin-top: 6px;
+
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 13px;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+    backdrop-filter: blur(10px);
+}
+
+.locationButton:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+    color: #fff;
+}
