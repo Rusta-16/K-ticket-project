@@ -46,19 +46,16 @@ export default function MapPage({ initialSelectedLocation }) {
         { day: 'вс', date: 18 },
         { day: 'пн', date: 19 }
     ]
-    React.useEffect(() => {
+    useEffect(() => {
         if (selectedDay === null || !selectedTime) return;
 
         const key = `seats-${selectedDay}-${selectedTime}`;
-        useEffect(() => {
-            if (selectedDay === null || !selectedTime) return;
 
-            const key = `seats-${selectedDay}-${selectedTime}`;
+        fetch(`/api/seats?key=${key}`)
+            .then(res => res.json())
+            .then(data => setBookedSeats(Array.isArray(data) ? data : []))
+            .catch(() => setBookedSeats([]));
 
-            fetch(`/api/seats?key=${key}`)
-                .then(res => res.json())
-                .then(data => setBookedSeats(data));
-        }, [selectedDay, selectedTime]);
     }, [selectedDay, selectedTime]);
     const isBooked = (seatId) => {
         return bookedSeats.includes(seatId)
