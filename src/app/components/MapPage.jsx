@@ -44,7 +44,15 @@ export default function MapPage({ initialSelectedLocation }) {
     const days = [
         { day: 'сб', date: 17 },
         { day: 'вс', date: 18 },
-        { day: 'пн', date: 19 }
+        { day: 'пн', date: 19 },
+        { day: 'вт', date: 20 },
+        { day: 'ср', date: 21 },
+        { day: 'чт', date: 22 },
+        { day: 'пт', date: 23 },
+        { day: 'сб', date: 24 },
+        { day: 'вс', date: 25 },
+        { day: 'пн', date: 26 }
+
     ]
     useEffect(() => {
         if (selectedDay === null || !selectedTime) return;
@@ -190,21 +198,21 @@ export default function MapPage({ initialSelectedLocation }) {
     const boardingPoint = isFromVolgodonsk
         ? {
             name: 'ул. отс.Вокзал улица морская',
-            link: 'https://yandex.ru/maps/-/CPvvuG3V'
+            link: 'https://yandex.ru/maps/-/CPv1YWok'
         }
         : {
             name: 'ул.Красноармейская 3б',
-            link: 'https://yandex.ru/maps/-/CPvvuZ1f'
+            link: 'https://yandex.ru/maps/-/CPvvuG3V'
         };
 
     const dropPoint = isFromVolgodonsk
         ? {
             name: 'ул.Красноармейская 3б',
-            link: 'https://yandex.ru/maps/-/CPvvuZ1f'
+            link: 'https://yandex.ru/maps/-/CPvvuG3V'
         }
         : {
             name: 'ул. отс.Вокзал улица морская',
-            link: 'https://yandex.ru/maps/-/CPvvuG3V'
+            link: 'https://yandex.ru/maps/-/CPv1YWok'
         };
     return (
         <div className='mapPage'>
@@ -225,8 +233,20 @@ export default function MapPage({ initialSelectedLocation }) {
                             </motion.p>
                         </AnimatePresence>
 
-                        <button className='mainButton' id='arrow' onClick={changeCity}><span className="arrowIcon">⟷</span></button>
-
+                        {/* 🔒 скрываем смену маршрута на этапе выбора мест и оплаты */}
+                        {step < 3 ? (
+    <button
+        className="mainButton"
+        id="arrow"
+        onClick={changeCity}
+    >
+        <span className="arrowIcon">⟷</span>
+    </button>
+) : (
+    <div className="arrowIconLocked">
+        ⟷
+    </div>
+)}
                         <AnimatePresence mode="wait">
                             <motion.p
                                 key={selectedlocation[1].location}
