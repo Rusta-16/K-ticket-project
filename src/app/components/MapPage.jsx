@@ -333,8 +333,8 @@ export default function MapPage({ initialSelectedLocation }) {
                                                             height={40}
                                                             style={{
                                                                 position: 'absolute',
-                                                                top: '30%',
-                                                                left: '30%',
+                                                                top: '40%',
+                                                                left: '20%',
                                                                 transform: 'translate(-50%, -50%)',
                                                                 zIndex: 20,
                                                                 pointerEvents: 'none'
