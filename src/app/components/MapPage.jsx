@@ -50,13 +50,15 @@ export default function MapPage({ initialSelectedLocation }) {
         if (selectedDay === null || !selectedTime) return;
 
         const key = `seats-${selectedDay}-${selectedTime}`;
-        const saved = localStorage.getItem(key);
+        useEffect(() => {
+            if (selectedDay === null || !selectedTime) return;
 
-        if (saved) {
-            setBookedSeats(JSON.parse(saved));
-        } else {
-            setBookedSeats([]);
-        }
+            const key = `seats-${selectedDay}-${selectedTime}`;
+
+            fetch(`/api/seats?key=${key}`)
+                .then(res => res.json())
+                .then(data => setBookedSeats(data));
+        }, [selectedDay, selectedTime]);
     }, [selectedDay, selectedTime]);
     const isBooked = (seatId) => {
         return bookedSeats.includes(seatId)
@@ -158,13 +160,31 @@ export default function MapPage({ initialSelectedLocation }) {
             const data = await res.json();
 
             if (data.success && data.paymentUrl) {
+
+                // 🔴 БРОНЬ МЕСТ (для всех пользователей)
+                await fetch('/api/seats', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        key: `seats-${selectedDay}-${selectedTime}`,
+                        seats: selectedSeats
+                    })
+                });
+
+                // очистка выбора
+                setSelectedSeats([]);
+
+                // редирект на оплату
                 window.location.href = data.paymentUrl;
             } else {
                 alert('Ошибка от сервера: ' + (data.error || 'Неизвестная ошибка'));
             }
+
         } catch (err) {
             console.error('Ошибка платежа:', err);
-            alert('Не удалось создать платёж.\n\nОткрой консоль (F12) и пришли мне всё красное, что там появилось.');
+            alert('Не удалось создать платёж.\n\nОткрой консоль (F12) и пришли ошибку.');
         }
     };
     const ticketPrice = 2500
